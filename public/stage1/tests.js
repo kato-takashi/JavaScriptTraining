@@ -136,7 +136,6 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
       // なお、11 番の青色の要素は li 要素ではありません！
       // よくみると、色がついているのはさらに内側の要素のようです。
       var elements = document.getElementsByTagName("p");
-      console.log(document.getElementsByTagName("p").length);
 
       expect(elements).to.have.length(1);
       expect(elements[0]).to.have.property(secret('gntAnzr'), secret('C'));
@@ -165,7 +164,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('2 番の橙色の要素を querySelector を使って1つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var element = 'change me!';
+      var element = document.querySelector("#chocolate");
 
       expect(element).to.have.property(secret('vq'), secret('pubpbyngr'));
 
@@ -177,7 +176,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('3 番の緑色の要素を querySelector を使って1つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var element = 'change me!';
+      var element = document.querySelector(".mediumseagreen");
 
       expect(element).to.have.property(secret('pynffAnzr'), secret('zrqvhzfrnterra'));
     });
@@ -186,7 +185,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('4 番の水色の要素を querySelectorAll を使って2つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var elements = 'change me!';
+      var elements = document.querySelectorAll(".turquoise");
 
       expect(elements).to.have.length(2);
       expect(elements[0]).to.have.property(secret('pynffAnzr'), secret('ghedhbvfr'));
@@ -197,8 +196,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('5 番の青色の要素を querySelector を使って1つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var element = 'change me!';
-
+      var element = document.querySelector("li blockquote");
       expect(element).to.have.property(secret('gntAnzr'), secret('OYBPXDHBGR'));
     });
 
@@ -206,7 +204,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('6 番の紫色の要素を querySelector を使って1つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var element = 'change me!';
+      var element = document.querySelector('li[data-js-training]');
 
       expect(element).to.have.deep.property(secret('qngnfrg.wfGenvavat'),
                                             secret('oyhrivbyrg'));
