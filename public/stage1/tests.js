@@ -334,9 +334,9 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('動いている寿司要素を取得する', function() {
 
       // 'change me!' を書き換えてください。
-      var element = $('div div xFlyingSushiMonster');
-
-      console.log(element);
+      // var element = $('x-flying-sushi-monster').text();
+      var element = document.getElementsByTagName("x-flying-sushi-monster")[0];
+      console.log("text　"+element);
       expect(element).to.have.deep.property(
         secret('grkgPbagrag'), '\uD83C\uDF63');
     });
