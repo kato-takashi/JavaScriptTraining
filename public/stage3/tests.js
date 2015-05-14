@@ -42,7 +42,6 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
       var element = document.querySelector('.mediumseagreen');
 
       var removeElement = document.querySelectorAll('.mediumseagreen-ghosts');
-      console.log('.mediumseagreen-ghosts length ' + removeElement.length);
       for(var i=0; i<removeElement.length; i++){
         element.removeChild(removeElement[i]);
       }
@@ -61,6 +60,8 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
 
 
       var turquoise = document.querySelector('.turquoise');
+      turquoise.appendChild(elementToAdd);
+
       expect(turquoise.childNodes.length).to.equal(2);
       expect(turquoise).to.have.deep.property('childNodes[0].textContent', '4');
       expect(turquoise).to.have.deep.property('childNodes[1]').equal(elementToAdd);
@@ -76,6 +77,8 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
 
 
       var blockquote = document.querySelector('blockquote');
+      blockquote.insertBefore(elementToAdd, blockquote.firstChild);
+
       expect(blockquote.childNodes.length).to.equal(2);
       expect(blockquote).to.have.deep.property('childNodes[0]').equal(elementToAdd);
       expect(blockquote).to.have.deep.property('childNodes[1].textContent', '5');
@@ -93,7 +96,7 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
       //
       // $('.brown-ghost').remove();
 
-
+      $('.brown-ghost').remove();
       var $brown = $('#brown');
       expect($brown.children()).to.have.length(0);
       expect($brown).to.have.text('6');
@@ -104,7 +107,7 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
 
       // ここにコードを記述してください。
 
-
+      $(".darkorange-space-invader").remove();
       var $darkorange = $('#darkorange');
       expect($darkorange.children()).to.have.length(0);
       expect($darkorange).to.have.text('7');
@@ -120,6 +123,17 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
 
 
       var $limegreen = $('.limegreen');
+      var $removeElement = $('.limegreen-ghosts');
+      $($removeElement).each(function(i, elem) {
+        console.log(i + ': ' + $(elem).text());
+        $(elem).remove();
+      });
+    // var node = document.querySelector(".limegreen");
+    // console.log("node"+node);
+    // var test = document.querySelector('.limegreen-ghosts:last-child');
+    // console.log(test);
+    // node.removeChild(test);
+    $($removeElement[0]).remove()
       expect($limegreen).to.have.text('8\uD83C\uDF3F');
     });
 
@@ -131,6 +145,8 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
 
 
       var $mediumturquoise = $('.mediumturquoise');
+      $mediumturquoise.append($elementToAdd);
+
       expect($mediumturquoise.children()).to.have.length(1);
       expect($mediumturquoise).to.have.text('9\uD83D\uDC2C');
     });
@@ -143,6 +159,8 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
 
 
       var $p = $('p');
+      $p.prepend($elementToAdd);
+      
       expect($p.children()).to.have.length(1);
       expect($p).to.have.text('\uD83D\uDC1F10');
     });
