@@ -12,6 +12,9 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
       // var ghost = document.querySelector('.firebrick-ghost');
       // element.removeChild(ghost);
 
+      var element = document.querySelector('#firebrick');
+      var ghost = document.querySelector('.firebrick-ghost');
+      element.removeChild(ghost);
 
       var firebrick = document.getElementById('firebrick');
       expect(firebrick.childNodes.length).to.equal(1);
@@ -22,6 +25,9 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
     it('2 番の要素からインベーダー要素を除去する', function() {
 
       // ここにコードを記述してください。
+      var element = document.querySelector('#chocolate');
+      var invader = document.querySelector('.chocolate-space-invader');
+      element.removeChild(invader);
 
 
       var darkorange = document.getElementById('chocolate');
@@ -33,7 +39,14 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
     it('3 番の要素の左右の幽霊要素をすべて除去する', function() {
 
       // ここにコードを記述してください。
+      var element = document.querySelector('.mediumseagreen');
 
+      var removeElement = document.querySelectorAll('.mediumseagreen-ghosts');
+      console.log('.mediumseagreen-ghosts length ' + removeElement.length);
+      for(var i=0; i<removeElement.length; i++){
+        element.removeChild(removeElement[i]);
+      }
+      
 
       var darkorange = document.querySelector('.mediumseagreen');
       expect(darkorange).to.have.property('textContent', '3\uD83C\uDF3F');
