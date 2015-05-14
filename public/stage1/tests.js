@@ -27,7 +27,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
 
       // 'change me!' を書き換えてください。
       var elementId = 'chocolate';
-      var element = document.getElementById("chocolate");
+      var element = document.getElementById('chocolate');
 
       expect(element).to.be.instanceof(HTMLElement);
       expect(element).to.have.property('id', elementId);
@@ -41,7 +41,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
 
       // 'change me!' を書き換えてください。
       var elementClassName = 'mediumseagreen';
-      var elements = document.getElementsByClassName("mediumseagreen");
+      var elements = document.getElementsByClassName('mediumseagreen');
 
       expect(elements).to.have.length(1);
       expect(elements[0]).to.have.property('className', elementClassName);
@@ -55,7 +55,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
 
       // 'change me!' を書き換えてください。
       var elementClassName = 'turquoise';
-      var elements = document.getElementsByClassName("turquoise");
+      var elements = document.getElementsByClassName('turquoise');
 
       expect(elements).to.have.length(2);
       expect(elements[0]).to.have.property('className', elementClassName);
@@ -70,7 +70,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
 
       // 'change me!' を書き換えてください。
       var elementTagName = 'blockquote';
-      var elements = document.getElementsByTagName("blockquote");
+      var elements = document.getElementsByTagName('blockquote');
 
       expect(elements).to.have.length(1);
       expect(elements[0]).to.have.property('tagName', elementTagName.toUpperCase());
@@ -93,7 +93,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
       // すると、開発ツール上で <li id="brown">... が選択されます。
       // このことから、7 番の赤色の要素の ID は brown だということがわかります。
       // では、'change me!' を document.getElementById('brown') に書き換えてみましょう。
-      var element = document.getElementById("brown");
+      var element = document.getElementById('brown');
 
       expect(element).to.have.property(secret('vq'), secret('oebja'));
     });
@@ -102,7 +102,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('8 番の橙色の要素が1つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var element = document.getElementById("darkorange");
+      var element = document.getElementById('darkorange');
 
       expect(element).to.have.property(secret('vq'), secret('qnexbenatr'));
     });
@@ -111,7 +111,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('9 番の緑色の要素が1つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var elements = document.getElementsByClassName("limegreen");
+      var elements = document.getElementsByClassName('limegreen');
 
       expect(elements).to.have.length(1);
       expect(elements[0]).to.have.property(secret('pynffAnzr'), secret('yvzrterra'));
@@ -121,7 +121,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('10 番の水色の要素が2つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var elements = document.getElementsByClassName("mediumturquoise");
+      var elements = document.getElementsByClassName('mediumturquoise');
 
       expect(elements).to.have.length(2);
       expect(elements[0]).to.have.property(secret('pynffAnzr'), secret('zrqvhzghedhbvfr'));
@@ -135,7 +135,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
       //
       // なお、11 番の青色の要素は li 要素ではありません！
       // よくみると、色がついているのはさらに内側の要素のようです。
-      var elements = document.getElementsByTagName("p");
+      var elements = document.getElementsByTagName('p');
 
       expect(elements).to.have.length(1);
       expect(elements[0]).to.have.property(secret('gntAnzr'), secret('C'));
@@ -152,7 +152,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
       //
       // 'change me!' を document.querySelector('#firebrick') に
       // 書き換えてください。
-      var element = document.querySelector('#firebrick') ;
+      var element = document.querySelector('#firebrick');
 
       expect(element).to.have.property(secret('vq'), secret('sveroevpx'));
 
@@ -164,7 +164,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('2 番の橙色の要素を querySelector を使って1つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var element = document.querySelector("#chocolate");
+      var element = document.querySelector('#chocolate');
 
       expect(element).to.have.property(secret('vq'), secret('pubpbyngr'));
 
@@ -176,7 +176,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('3 番の緑色の要素を querySelector を使って1つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var element = document.querySelector(".mediumseagreen");
+      var element = document.querySelector('.mediumseagreen');
 
       expect(element).to.have.property(secret('pynffAnzr'), secret('zrqvhzfrnterra'));
     });
@@ -185,7 +185,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('4 番の水色の要素を querySelectorAll を使って2つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var elements = document.querySelectorAll(".turquoise");
+      var elements = document.querySelectorAll('.turquoise');
 
       expect(elements).to.have.length(2);
       expect(elements[0]).to.have.property(secret('pynffAnzr'), secret('ghedhbvfr'));
@@ -196,7 +196,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('5 番の青色の要素を querySelector を使って1つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var element = document.querySelector("li blockquote");
+      var element = document.querySelector('li blockquote');
       expect(element).to.have.property(secret('gntAnzr'), secret('OYBPXDHBGR'));
     });
 
@@ -264,7 +264,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
       // 基本的な使い方は document.querySelectorAll と同じです。
       //
       // 'change me!' を $('#brown') に書き換えてください。
-      var $element = $('#brown') ;
+      var $element = $('#brown');
 
       expect($element).to.be.instanceof(jQuery);
       expect($element).to.have.id(secret('oebja'));
@@ -274,7 +274,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
     it('8 番の橙色の要素を jQuery を使って1つ取得できる', function() {
 
       // 'change me!' を書き換えてください。
-      var $element = $('#darkorange') ;
+      var $element = $('#darkorange');
 
       expect($element).to.be.instanceof(jQuery);
       expect($element).to.have.id(secret('qnexbenatr'));
@@ -320,8 +320,6 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
 
       // 'change me!' を書き換えてください。
       var $element = $('.js-training [data-js-training="darkorchid"]');
-      
-
       expect($element).to.be.instanceof(jQuery);
       expect($element).to.have.length(1);
       expect($element).to.have.data(secret('wfGenvavat'),
@@ -335,8 +333,7 @@ describe('ステージ1（意図した DOM 要素を取得できるようにな�
 
       // 'change me!' を書き換えてください。
       // var element = $('x-flying-sushi-monster').text();
-      var element = document.getElementsByTagName("x-flying-sushi-monster")[0];
-      console.log("text　"+element);
+      var element = document.getElementsByTagName('x-flying-sushi-monster')[0];
       expect(element).to.have.deep.property(
         secret('grkgPbagrag'), '\uD83C\uDF63');
     });
