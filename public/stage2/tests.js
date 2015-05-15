@@ -81,15 +81,12 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       // ここにコードを記述してください。
       // 変更した DOM 要素は element 変数に代入してください。
       var element = document.querySelector('blockquote');
-      element.style.transform = "rotate( 10deg )"; 
-
-
+      element.style.transform = 'rotate( 10deg )';
       expect(element).to.have.property(
         secret('gntAnzr'), secret('OYBPXDHBGR'));
 
       expect(element).to.have.deep.property(
         secret('fglyr.genafsbez'), secret('ebgngr(10qrt)'));
-
       // 参考情報
       // https://developer.mozilla.org/ja/search?q=css+%E5%9B%9E%E8%BB%A2
     });
@@ -103,12 +100,9 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       // なお、上に 20px 移動させる方法は複数ありますが、今回は top 属性を
       // 使う方法を使ってください。
       var element = document.querySelector('li[data-js-training]');
-      
-      element.style.position = 'relative'; 
-      element.style.top = '-20px' ;
-      console.log("element"+element.style.top);
-
-
+      element.style.position = 'relative';
+      element.style.top = '-20px';
+      console.log('element' + element.style.top);
       expect(element).to.have.deep.property(
         secret('qngnfrg.wfGenvavat'), secret('oyhrivbyrg'));
 
@@ -150,14 +144,11 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
 
       // ここにコードを記述してください。
       // 変更した DOM 要素は $element 変数に代入してください。
-      var $element = $("#darkorange");
-      $element.text($element.text()+$element.text());
-
-
+      var $element = $('#darkorange');
+      $element.text($element.text() + $element.text());
       expect($element).to.be.instanceof(jQuery);
       expect($element).to.have.id(secret('qnexbenatr'));
       expect($element).to.have.text('\uD83C\uDF6B\uD83C\uDF6B');
-
       // 参考情報
       // http://api.jquery.com/category/manipulation/
     });
@@ -200,11 +191,9 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       // ここにコードを記述してください。
       // 変更した DOM 要素は $element 変数に代入してください。
       var $element = $('.js-training li p');
-      $element.css('transform', 'rotate( 10deg )')
-
+      $element.css('transform', 'rotate( 10deg )');
 
       expect($element).to.be.instanceof(jQuery);
-
       expect($element.get(0)).to.have.property(
         secret('gntAnzr'), secret('C'));
 
@@ -220,7 +209,7 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       // なお、上に 20px 移動させる方法は複数ありますが、今回は top 属性を
       // 使う方法を使ってください。
       var $element = $('.js-training [data-js-training="darkorchid"]');
-      $element.css("position", "relative").css("top", "-20px");
+      $element.css('position', 'relative').css('top', '-20px');
 
 
 
