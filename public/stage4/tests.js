@@ -47,7 +47,7 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
       // ここにコードを記述してください。
       $('#chocolate').on('click', function(event){
         var $target = $(event.target);
-        $target.text(Number($target.text())-1);
+        $target.text(Number($target.text()) - 1);
       });
 
 
@@ -67,11 +67,9 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
       var target = document.getElementsByClassName('mediumseagreen');
       target[0].addEventListener('click', function(){
         i += 10;
-        target[0].style.transform = 'rotate('+ i +'deg)';
-        
+        target[0].style.transform = 'rotate(' + i + 'deg)';
       });
 
-    
       var mediumseagreen = document.querySelector('.mediumseagreen');
       // console.log('mediumseagreen'+mediumseagreen.style);
       mediumseagreen.dispatchEvent(createClickEvent());
@@ -87,21 +85,16 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
     it('4 番の要素を入力された角度に回転できる', function() {
 
       // ここにコードを記述してください。
-      
-
       $('.turquoise input').change(function() {
           var val = $('.turquoise input').val();
           console.log(val);
           var $element = $('.turquoise');
-          $element[0].style.transform = 'rotate('+ val +'deg)';
+          $element[0].style.transform = 'rotate(' + val + 'deg)';
 
       });
 
-
       var turquoise = document.querySelector('.turquoise');
       var turquoiseInput = turquoise.querySelector('input');
-     
-
       simulateChangeEvent(turquoiseInput, 10);
       expect(turquoise).to.have.deep.property(
         secret('fglyr.genafsbez'), secret('ebgngr(10qrt)'));
@@ -112,7 +105,8 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
     });
 
 
-    it('5 番の要素の内容を取得できる', function(done) {
+    // it('5 番の要素の内容を取得できる', function(done) {
+      it('5 番の要素の内容を取得できる', function() {
       // このテストは、画面下部の .steelblue 要素の内容が "5 (クジラの絵文字)" で
       // あることを確認する意図があります。画面上は 5 とクジラの絵文字が正しく
       // 表示されています。しかし、テストは失敗しているようです。
@@ -121,10 +115,17 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
       //
       // なお、expect(steelblue).to.be.null は上記のテストの要件を満たして
       // いないので、正解ではありません。
+      // var steelblue = document.querySelector('.steelblue');
+      // console.log(steelblue);
+      // expect(steelblue).to.have.property('textContent', '5 \uD83D\uDC33');
+      // done();
 
-      var steelblue = document.querySelector('.steelblue');
-      expect(steelblue).to.have.property('textContent', '5 \uD83D\uDC33');
-      done();
+      $(function () {
+        // ここに処理を書く
+        var steelblue = document.querySelector('.steelblue');
+        console.log(steelblue);
+        expect(steelblue).to.have.property('textContent', '5 \uD83D\uDC33');
+      });
     });
   });
 });
@@ -151,7 +152,6 @@ function createChangeEvent() {
   return event;
 }
 
-
 function secret(str) {
   // Copyright (c) 2012 K.Adam White
   // Released under the MIT license
@@ -168,5 +168,3 @@ function secret(str) {
     return String.fromCharCode(charCode);
   }).join('');
 }
-
- 
