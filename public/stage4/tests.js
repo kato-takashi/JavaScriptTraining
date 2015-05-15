@@ -24,6 +24,14 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
       //
       // ここに上記のどちらかのコードを記述してください。
 
+      // var element = document.getElementById('firebrick');
+      // element.addEventListener('click', function(){
+      //   element.textContent = Number(element.textContent)+1;
+      // });
+      $('#firebrick').on('click', function(event) {
+        var $target = $(event.target);
+        $target.text(Number($target.text()) + 1);
+      });
 
       var firebrick = document.getElementById('firebrick');
       firebrick.dispatchEvent(createClickEvent());
@@ -37,6 +45,10 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
     it('2 番の要素の click イベントで要素内の数字を 1 ずつ小さくできる', function() {
 
       // ここにコードを記述してください。
+      $('#chocolate').on('click', function(event){
+        var $target = $(event.target);
+        $target.text(Number($target.text())-1);
+      });
 
 
       var chocolate = document.getElementById('chocolate');
@@ -51,9 +63,17 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
     it('3 番の要素の click イベントで要素を 10 度ずつ回転できる', function() {
 
       // ここにコードを記述してください。
+      var i = 0;
+      var target = document.getElementsByClassName('mediumseagreen');
+      target[0].addEventListener('click', function(){
+        i += 10;
+        target[0].style.transform = 'rotate('+ i +'deg)';
+        
+      });
 
-
+    
       var mediumseagreen = document.querySelector('.mediumseagreen');
+      // console.log('mediumseagreen'+mediumseagreen.style);
       mediumseagreen.dispatchEvent(createClickEvent());
       expect(mediumseagreen).to.have.deep.property(
         secret('fglyr.genafsbez'), secret('ebgngr(10qrt)'));
@@ -67,10 +87,20 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
     it('4 番の要素を入力された角度に回転できる', function() {
 
       // ここにコードを記述してください。
+      
+
+      $('.turquoise input').change(function() {
+          var val = $('.turquoise input').val();
+          console.log(val);
+          var $element = $('.turquoise');
+          $element[0].style.transform = 'rotate('+ val +'deg)';
+
+      });
 
 
       var turquoise = document.querySelector('.turquoise');
       var turquoiseInput = turquoise.querySelector('input');
+     
 
       simulateChangeEvent(turquoiseInput, 10);
       expect(turquoise).to.have.deep.property(
@@ -83,7 +113,6 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
 
 
     it('5 番の要素の内容を取得できる', function(done) {
-
       // このテストは、画面下部の .steelblue 要素の内容が "5 (クジラの絵文字)" で
       // あることを確認する意図があります。画面上は 5 とクジラの絵文字が正しく
       // 表示されています。しかし、テストは失敗しているようです。
@@ -139,3 +168,5 @@ function secret(str) {
     return String.fromCharCode(charCode);
   }).join('');
 }
+
+ 
