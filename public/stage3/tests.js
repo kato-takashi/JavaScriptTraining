@@ -42,10 +42,9 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
       var element = document.querySelector('.mediumseagreen');
 
       var removeElement = document.querySelectorAll('.mediumseagreen-ghosts');
-      for(var i=0; i<removeElement.length; i++){
+      for(var i = 0; i < removeElement.length; i++){
         element.removeChild(removeElement[i]);
       }
-      
 
       var darkorange = document.querySelector('.mediumseagreen');
       expect(darkorange).to.have.property('textContent', '3\uD83C\uDF3F');
@@ -106,8 +105,7 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
     it('7 番の要素からインベーダー要素を除去する', function() {
 
       // ここにコードを記述してください。
-
-      $(".darkorange-space-invader").remove();
+      $('.darkorange-space-invader').remove();
       var $darkorange = $('#darkorange');
       expect($darkorange.children()).to.have.length(0);
       expect($darkorange).to.have.text('7');
@@ -133,7 +131,7 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
     // var test = document.querySelector('.limegreen-ghosts:last-child');
     // console.log(test);
     // node.removeChild(test);
-    $($removeElement[0]).remove()
+    $($removeElement[0]).remove();
       expect($limegreen).to.have.text('8\uD83C\uDF3F');
     });
 
@@ -160,7 +158,6 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
 
       var $p = $('p');
       $p.prepend($elementToAdd);
-      
       expect($p.children()).to.have.length(1);
       expect($p).to.have.text('\uD83D\uDC1F10');
     });
