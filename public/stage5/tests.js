@@ -13,6 +13,10 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       //   expect(msg).to.equal('resolved!');
       //   testDone();
       // });
+      promise.then(function(msg){
+        expect(msg).to.equal('resolved!');
+        testDone();
+      });
     });
 
 
@@ -24,7 +28,11 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       //
       // expect(msg).to.equal('rejected!');
       // testDone();
-
+        
+        promise.catch(function(msg){
+          expect(msg).to.equal('rejected!');
+          testDone();  
+        });
       // ここにコードを記述してください。
 
 
