@@ -80,7 +80,10 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       // var promisedFriends = fetch(api + username).then(function(res) {
       //   return res.json();
       // });
-
+      var promisedFriends = fetch(api + username).then(function(res) {
+        console.log(res);
+        return res.json();
+      });
 
       return expect(promisedFriends).to.eventually.have.length(1)
         .and.have.members(['PYXC-PJ']);
@@ -92,9 +95,9 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       var username = 'Shen';
 
       // 作成した promise を promisedFriends 変数に代入してください。
-      var promisedFriends = 'change me!';
-
-
+      var promisedFriends = fetch(api + username).then(function(res) {
+            return res.json();
+      });
       return expect(promisedFriends).to.eventually.have.length(2)
         .and.have.members(['jisp', 'TeJaS']);
     });
@@ -105,9 +108,20 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       var username = 'Shen';
 
       // 作成した promise を promisedFriends 変数に代入してください。
-      var promisedFriends = 'change me!';
+      // var promisedFriends = "change this";
+      var target;
+      var promisedFriends = fetch(api + username).then(function(res) { 
+            res.json().then(function(data){
+            }).then(function(d){
+              fetch(api + data[1]).then(function(r) {
+                console.log(r.json());
+              });
+            console.log(res.json());
+            return res.json();
+            });
 
-
+      });
+      
       return expect(promisedFriends).to.eventually.have.length(1)
         .and.have.members(['TypeScript']);
     });
