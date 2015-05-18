@@ -153,7 +153,10 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
     it('Github の mixi-inc の organization の情報を取得できる', function() {
 
       // 作成した promise を mixiOrg 変数に代入してください。
-      var mixiOrg = 'change me!';
+      var url = 'https://api.github.com/users/mixi-inc';
+      var mixiOrg = fetch(url).then(function(res){
+        return res.json();
+      });
 
       return expect(mixiOrg).to.eventually.have.property('id', 1089312);
 
@@ -166,7 +169,13 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       var repository = 'mixi-inc/JavaScriptTraining';
 
       // 作成した promise を mixiRepo 変数に代入してください。
-      var mixiRepo = 'change me!';
+      var githubUrl = 'https://api.github.com/users/';
+
+      var mixiRepo = fetch(githubUrl + repository).then(function(res){
+        return res.json();
+      }).then(function(data){
+        console.log(data);
+      });
 
 
       return expect(mixiRepo).to.eventually.have.property('full_name', repository);
