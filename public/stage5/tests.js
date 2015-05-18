@@ -169,12 +169,23 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       var repository = 'mixi-inc/JavaScriptTraining';
 
       // 作成した promise を mixiRepo 変数に代入してください。
-      var githubUrl = 'https://api.github.com/users/';
+      //github リポジトリにアクセス　'https://api.github.com/users/ユーザー名/repos'
+      var githubUrl = 'https://api.github.com/users/mixi-inc/repos';
 
-      var mixiRepo = fetch(githubUrl + repository).then(function(res){
+      var mixiRepo = fetch(githubUrl).then(function(res){
         return res.json();
       }).then(function(data){
-        console.log(data);
+        // console.log("data(repository)");
+        // console.log(data[0].id);
+        var arrLenght = data.length;
+        var elementNum;
+        for(var i = 0; i < arrLenght; i++){          
+          if(data[i].full_name == repository){
+            elementNum = i;
+            // console.log(i + '；'+ data[elementNum].full_name);
+            return data[elementNum];
+          }
+        }
       });
 
 
