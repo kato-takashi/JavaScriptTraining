@@ -190,32 +190,29 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       var languages = [ 'VimL', '"Emacs Lisp"' ];
       var queryURL = ['https://api.github.com/search/repositories?q=' + languages[0] + '&sort=stars&order=desc',
                       'https://api.github.com/search/repositories?q=' + languages[1] + '&sort=stars&order=desc'];
-      var answerArr = [];
-
-      // 作成した promise を mostPopularRepos 変数に代入してください。
-      var mostPopularRepos = fetch(queryURL[0]).then(function(res){
+      var promise0 = fetch(queryURL[0]).then(function(res){
             // console.log(res);
             return res.json();
           }).then(function(data){
             // console.log(data.items[0].name);
-            // answerArr = ["emacs-lisp-style-guide"];
-            answerArr.push(data.items[0].name);
-            console.log(answerArr);
-            // return answerArr;
-          }).then(fetch(queryURL[1]).then(function(res){
+            return data.items[0].name;
+          });
+
+      var promise1 = fetch(queryURL[1]).then(function(res){
             // console.log(res);
             return res.json();
           }).then(function(data){
             // console.log(data.items[0].name);
-            // answerArr = ["emacs-lisp-style-guide"];
-            answerArr.push(data.items[0].name);
-            console.log(answerArr);
-            return answerArr;
-          }));
-
+            return data.items[1].name;
+          });
+      var mostPopularRepos = Promise.all([promise0, promise1])
+          .then(function(res){
+            return res;
+          }).then(function(data){
+            return data;
+          });
       return expect(mostPopularRepos).to.eventually.have.length(2)
         .and.satisfy(function(names) {
-          console.log('test');
           return typeof names[0] === 'string' &&
             typeof names[1] === 'string';
         });
