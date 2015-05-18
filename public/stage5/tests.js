@@ -28,14 +28,11 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       //
       // expect(msg).to.equal('rejected!');
       // testDone();
-        
         promise.catch(function(msg){
           expect(msg).to.equal('rejected!');
-          testDone();  
+          testDone();
         });
       // ここにコードを記述してください。
-
-
     });
 
 
@@ -47,8 +44,6 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
 
       // 作成した promise を promise 変数に代入してください。
       var promise = Promise.all([promise1, promise2, promise3]);
-
-
       return expect(promise).to.eventually.deep.equal(messageFragments);
     });
 
@@ -123,13 +118,11 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
               });
 
             }).catch(function() {
-              console.log("error");
+              console.log('error');
         });
-      
       return expect(promisedFriends).to.eventually.have.length(1)
         .and.have.members(['TypeScript']);
     });
-
 
     it.skip('/api/friends API を使って CoffeeScript の友人を再帰的に取得できる', function() {
       // 難易度高いので、自信のある人だけ挑戦してください。
@@ -159,7 +152,6 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       });
 
       return expect(mixiOrg).to.eventually.have.property('id', 1089312);
-
       // Github API に関する参考情報
       // https://developer.github.com/v3/orgs
     });
@@ -169,18 +161,17 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       var repository = 'mixi-inc/JavaScriptTraining';
 
       // 作成した promise を mixiRepo 変数に代入してください。
-      //github リポジトリにアクセス　'https://api.github.com/users/ユーザー名/repos'
+      //github リポジトリにアクセス'https://api.github.com/users/ユーザー名/repos'
       var githubUrl = 'https://api.github.com/users/mixi-inc/repos';
 
       var mixiRepo = fetch(githubUrl).then(function(res){
         return res.json();
       }).then(function(data){
-        // console.log("data(repository)");
         // console.log(data[0].id);
         var arrLenght = data.length;
         var elementNum;
-        for(var i = 0; i < arrLenght; i++){          
-          if(data[i].full_name == repository){
+        for(var i = 0; i < arrLenght; i++){
+          if(data[i].full_name === repository){
             elementNum = i;
             // console.log(i + '；'+ data[elementNum].full_name);
             return data[elementNum];
@@ -188,24 +179,43 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
         }
       });
 
-
       return expect(mixiRepo).to.eventually.have.property('full_name', repository);
-
       // Github API に関する参考情報
       // https://developer.github.com/v3/repos/
     });
 
 
-    it('Github API を使って、VimL、Emacs Lisp でスターが最も多いプロダクト名を' +
+    it('Github API を使って、vim、Emacs Lisp でスターが最も多いプロダクト名を' +
        'それぞれ 1 つずつ取得できる', function() {
       var languages = [ 'VimL', '"Emacs Lisp"' ];
-      var mostPopularRepos = 'change me!';
+      var queryURL = ['https://api.github.com/search/repositories?q=' + languages[0] + '&sort=stars&order=desc',
+                      'https://api.github.com/search/repositories?q=' + languages[1] + '&sort=stars&order=desc'];
+      var answerArr = [];
 
       // 作成した promise を mostPopularRepos 変数に代入してください。
-
+      var mostPopularRepos = fetch(queryURL[0]).then(function(res){
+            // console.log(res);
+            return res.json();
+          }).then(function(data){
+            // console.log(data.items[0].name);
+            // answerArr = ["emacs-lisp-style-guide"];
+            answerArr.push(data.items[0].name);
+            console.log(answerArr);
+            // return answerArr;
+          }).then(fetch(queryURL[1]).then(function(res){
+            // console.log(res);
+            return res.json();
+          }).then(function(data){
+            // console.log(data.items[0].name);
+            // answerArr = ["emacs-lisp-style-guide"];
+            answerArr.push(data.items[0].name);
+            console.log(answerArr);
+            return answerArr;
+          }));
 
       return expect(mostPopularRepos).to.eventually.have.length(2)
         .and.satisfy(function(names) {
+          console.log('test');
           return typeof names[0] === 'string' &&
             typeof names[1] === 'string';
         });
