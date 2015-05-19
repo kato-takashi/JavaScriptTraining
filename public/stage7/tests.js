@@ -6,15 +6,11 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
       var i = 0;
 
       return function() {
-        console.log(i + 'クロージャ');
         return i++;
       };
     };
 
-    var counter = createCounter();
-    
-
-
+    var counter = createCounter();    
     it('1回目の値がわかる', function() {
       expect(counter()).to.equal(0);
     });
@@ -136,9 +132,7 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
 
     var parent = new Parent();
     var child = new Child();
-    // 継承　child > parent > grandParent
-
-
+    // 継承　//child>parent>grandParent
     it('parent.grandParent の値がわかる', function() {
       expect(parent.grandParent).to.equal(true);
     });
@@ -150,11 +144,9 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
       expect(parent.child).to.equal(undefined);
     });
 
-
     it('child.grandParent の値がわかる', function() {
       expect(child.grandParent).to.equal(true);
     });
-
 
     it('child.parent の値がわかる', function() {
       expect(child.parent).to.equal(true);
@@ -278,8 +270,6 @@ describe('あなたの闇のJS力', function() {
       expect(+'10').to.equal(10);
     });
 
-    console.log('console.');
-    console.log('10.1'|9);
     it("'10.1'|0 の値がわかる", function() {
       //ビットごとの OR
       expect('10.1'|0).to.equal(10);
@@ -288,53 +278,51 @@ describe('あなたの闇のJS力', function() {
 
     it("Array.prototype.slice.call({ length: 2, 0: 'foo', 1: 'bar' }) の値がわかる", function() {
       var obj = { length: 2, 0: 'foo', 1: 'bar' };
-
       expect(Array.prototype.slice.call(obj))
-        .to.deep.equal(/* ここに値を書き込んでください */);
+        .to.deep.equal(['foo', 'bar']);
     });
-
 
     it('+(new Date()) の型がわかる', function() {
       expect(typeof +(new Date()))
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal('number');
     });
 
 
     it('(new Date()) + 0 の型がわかる', function() {
       expect(typeof ((new Date()) + 0))
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal('string');
     });
   });
 
 
   describe('ダブルスタンダード Array コンストラクタ', function() {
     it('Array(3) が作成する配列の長さがわかる', function() {
-      expect(Array(3)).to.have.length(/* ここに値を書き込んでください */);
+      expect(Array(3)).to.have.length(3);
     });
 
 
     it('Array(3) が作成する配列の0番目の要素がわかる', function() {
-      expect(Array(3)[0]).to.equal(/* ここに値を書き込んでください */);
+      expect(Array(3)[0]).to.equal(undefined);
     });
-
-
+    var test = Array(3);
+    console.log(test.length);
     it('Array(3) が作成する配列がわかる', function() {
-      expect(Array(3)).to.deep.equal(/* ここに値を書き込んでください */);
+      expect(Array(3)).to.deep.equal([] );
     });
 
 
     it('Array(1, 2, 3) が作成する配列の長さがわかる', function() {
-      expect(Array(1, 2, 3)).to.have.length(/* ここに値を書き込んでください */);
+      expect(Array(1, 2, 3)).to.have.length(3);
     });
 
 
     it('Array(1, 2, 3) が作成する配列の0番目の要素がわかる', function() {
-      expect(Array(1, 2, 3)[0]).to.equal(/* ここに値を書き込んでください */);
+      expect(Array(1, 2, 3)[0]).to.equal(1);
     });
 
 
     it('Array(1, 2, 3) が作成する配列がわかる', function() {
-      expect(Array(1, 2, 3)).to.deep.equal(/* ここに値を書き込んでください */);
+      expect(Array(1, 2, 3)).to.deep.equal([1, 2, 3]);
     });
   });
 
@@ -344,7 +332,7 @@ describe('あなたの闇のJS力', function() {
       var obj = { foo: 'bar' };
 
       with (obj) {
-        expect(foo).to.equal(/* ここに値を書き込んでください */);
+        expect(foo).to.equal('bar');
       }
     });
 
@@ -353,7 +341,7 @@ describe('あなたの闇のJS力', function() {
       var obj = { 'foo': 'bar', 'undefined': 'bar' };
 
       with (obj) {
-        expect(foo === undefined).to.equal(/* ここに値を書き込んでください */);
+        expect(foo === undefined).to.equal(true);
       }
     });
 
@@ -362,7 +350,7 @@ describe('あなたの闇のJS力', function() {
       var obj = { 'foo': 'bar', 'null': 'bar' };
 
       with (obj) {
-        expect(foo === null).to.equal(/* ここに値を書き込んでください */);
+        expect(foo === null).to.equal(false);
       }
     });
   });
@@ -370,35 +358,35 @@ describe('あなたの闇のJS力', function() {
 
   describe('JavaScript のゆるふわ型判定', function() {
     it('typeof 0 の結果がわかる', function() {
-      expect(typeof 0).to.equal(/* ここに値を書き込んでください */);
+      expect(typeof 0).to.equal('number');
     });
 
     it('typeof true の結果がわかる', function() {
-      expect(typeof true).to.equal(/* ここに値を書き込んでください */);
+      expect(typeof true).to.equal('boolean');
     });
 
     it("typeof 'string' の結果がわかる", function() {
-      expect(typeof 'string').to.equal(/* ここに値を書き込んでください */);
+      expect(typeof 'string').to.equal('string');
     });
 
     it('typeof function() {} の結果がわかる', function() {
-      expect(typeof function() {}).to.equal(/* ここに値を書き込んでください */);
+      expect(typeof function() {}).to.equal('function');
     });
 
     it('typeof {} の結果がわかる', function() {
-      expect(typeof {}).to.equal(/* ここに値を書き込んでください */);
+      expect(typeof {}).to.equal('object');
     });
 
     it('typeof [] の結果がわかる', function() {
-      expect(typeof []).to.equal(/* ここに値を書き込んでください */);
+      expect(typeof []).to.equal('object');
     });
-
+    console.log(typeof null);
     it('typeof undefined の結果がわかる', function() {
-      expect(typeof undefined).to.equal(/* ここに値を書き込んでください */);
+      expect(typeof undefined).to.equal('undefined');
     });
 
     it('typeof null の結果がわかる', function() {
-      expect(typeof null).to.equal(/* ここに値を書き込んでください */);
+      expect(typeof null).to.equal('object');
     });
   });
 });
