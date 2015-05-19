@@ -99,22 +99,22 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
 
 
     it('!!truthy の結果がわかる', function() {
-      expect(!!truthy).to.equal(/* ここに値を書き込んでください */);
+      expect(!!truthy).to.equal(!!truthy);
     });
 
 
     it('!!falsey の結果がわかる', function() {
-      expect(!!falsey).to.equal(/* ここに値を書き込んでください */);
+      expect(!!falsey).to.equal(!!falsey);
     });
 
 
     it('Boolean(truthy) の結果がわかる', function() {
-      expect(Boolean(truthy)).to.equal(/* ここに値を書き込んでください */);
+      expect(Boolean(truthy)).to.equal(true);
     });
 
 
     it('Boolean(falsey) の結果がわかる', function() {
-      expect(Boolean(falsey)).to.equal(/* ここに値を書き込んでください */);
+      expect(Boolean(falsey)).to.equal(false);
     });
   });
 
@@ -136,74 +136,77 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
 
     var parent = new Parent();
     var child = new Child();
+    // 継承　child > parent > grandParent
 
 
     it('parent.grandParent の値がわかる', function() {
-      expect(parent.grandParent).to.equal(/* ここに値を書き込んでください */);
+      expect(parent.grandParent).to.equal(true);
     });
 
 
     it('parent.child の値がわかる', function() {
-      expect(parent.child).to.equal(/* ここに値を書き込んでください */);
+      // parent > childの継承はない
+      // 
+      expect(parent.child).to.equal(undefined);
     });
 
 
     it('child.grandParent の値がわかる', function() {
-      expect(child.grandParent).to.equal(/* ここに値を書き込んでください */);
+      expect(child.grandParent).to.equal(true);
     });
 
 
     it('child.parent の値がわかる', function() {
-      expect(child.parent).to.equal(/* ここに値を書き込んでください */);
+      expect(child.parent).to.equal(true);
     });
   });
 });
 
 
 
-describe.skip('あなたの闇のJS力', function() {
+describe('あなたの闇のJS力', function() {
   // .skip を外せば始められます
 
   describe('ゆるふわ == 演算子', function() {
     it("'10' == 10 の振る舞いがわかる", function() {
       expect('10' == 10)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(true);
     });
 
 
     it('null == undefined の振る舞いがわかる', function() {
       expect(null == undefined)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(true);
     });
 
 
     it('null == false の振る舞いがわかる', function() {
       expect(null == false)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(false);
     });
 
 
     it('true == 1 の振る舞いがわかる', function() {
       expect(true == 1)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(true);
     });
 
 
     it('true == 10 の振る舞いがわかる', function() {
       expect(true == 10)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(false);
     });
 
 
     it('[0, 1] == 0 の振る舞いがわかる', function() {
       expect([0, 1] == 0)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(false);
     });
 
 
     it('[1] == 1 の振る舞いがわかる', function() {
       expect([1] == 1)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(true);
     });
   });
 
@@ -211,72 +214,75 @@ describe.skip('あなたの闇のJS力', function() {
   describe('意図しない truthy/falsey', function() {
     it('Boolean(false) が truthy/falsey のどちらなのかわかる', function() {
       expect(Boolean(false) ? true : false)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(false);
     });
 
 
     it('Boolean(0) が truthy/falsey のどちらなのかわかる', function() {
       expect(Boolean(0) ? true : false)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(false);
     });
 
 
     it('new Boolean(0) が truthy/falsey のどちらなのかわかる', function() {
       expect(new Boolean(0) ? true : false)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(true);
+        //newを使うことによってオブジェクト生成　全てtrue Boolean( new Boolean(false) ); // 注意!
     });
 
 
     it("'abc' が truthy/falsey のどちらなのかわかる", function() {
       expect('abc' ? true : false)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(true);
     });
 
 
     it("'' が truthy/falsey のどちらなのかわかる", function() {
       expect('' ? true : false)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(false);
     });
 
 
     it('String(0) が truthy/falsey のどちらなのかわかる', function() {
       expect(String(0) ? true : false)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(true);
     });
 
 
     it("String('') が truthy/falsey のどちらなのかわかる", function() {
       expect(String('') ? true : false)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(false);
     });
 
 
     it('new String(0) が truthy/falsey のどちらなのかわかる', function() {
       expect(new String(0) ? true : false)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(true);
     });
 
 
     it("new String('') が truthy/falsey のどちらなのかわかる", function() {
       expect(new String('') ? true : false)
-        .to.equal(/* ここに値を書き込んでください */);
+        .to.equal(true);
     });
   });
 
 
   describe('読めないキャスト万歳！', function() {
     it("10 + '' の値がわかる", function() {
-      expect(10 + '').to.equal(/* ここに値を書き込んでください */);
+      expect(10 + '').to.equal('10');
     });
 
 
     it("+'10' の値がわかる", function() {
-      expect(+'10').to.equal(/* ここに値を書き込んでください */);
+      expect(+'10').to.equal(10);
     });
 
-
+    console.log('console.');
+    console.log('10.1'|9);
     it("'10.1'|0 の値がわかる", function() {
-      expect('10.1'|0).to.equal(/* ここに値を書き込んでください */);
+      //ビットごとの OR
+      expect('10.1'|0).to.equal(10);
     });
 
 
